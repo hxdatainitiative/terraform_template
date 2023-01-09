@@ -11,3 +11,11 @@ provider "aws" {
     }
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket = data.backend_bucket
+    key    = local.backend_key
+    region = var.aws_region
+  }
+}
