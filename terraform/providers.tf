@@ -5,8 +5,8 @@ provider "aws" {
       Initiative       = local.initative
       Owner            = local.owner
       Manager          = local.manager
-    #   BackendBucket    = data.backend_bucket
-      BackendKey       = local.backend_key
+      BackendBucket    = "hx-datainitiative-backend"
+      BackendKey       = local.replace_with_your_project_name
       DeleteProtection = local.delete_protection
     }
   }
@@ -14,8 +14,8 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = data.backend_bucket
-    key    = local.backend_key
+    bucket = "hx-datainitiative-backend"
+    key    = "${local.replace_with_your_project_name}/terraform.tfstate" # It must be a constant string
     region = var.aws_region
   }
 }
